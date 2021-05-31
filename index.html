@@ -4,11 +4,73 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="normalize.css" />
     <link rel="stylesheet" href="style.css" />
     <title>Library</title>
   </head>
   <body>
-    <p class="container"></p>
+    <div class="container">
+      <h1>Library</h1>
+      <table></table>
+
+      <button id="newBook" class="new-book">NEW BOOK</button>
+
+      <div class="bg-form" id="bgForm">
+        <div class="form-content" id="myForm">
+          <form id="formContainer" action="#" class="form-container">
+            <div class="close" id="closeForm">+</div>
+            <h3>Add A New Book</h3>
+
+            <div class="input input-title">
+              <label for="title"><b>Title:</b></label>
+              <input
+                type="text"
+                placeholder="Enter the Book Title"
+                name="title"
+                id="title"
+                required
+              />
+            </div>
+
+            <div class="input input-author">
+              <label for="author"><b>Author:</b></label>
+              <input
+                type="text"
+                placeholder="Enter the Author"
+                name="author"
+                id="author"
+                required
+              />
+            </div>
+
+            <div class="input input-pages">
+              <label for="pages"><b>Pages:</b></label>
+              <input
+                type="text"
+                placeholder="Enter the Book Pages"
+                name="pages"
+                id="pages"
+                required
+              />
+            </div>
+
+            <div class="input input-read">
+              <b>Status:</b>
+              <div class="read">
+                <input type="radio" name="status" id="read" />
+                <lable for="read">Read</lable>
+              </div>
+              <div class="not-read">
+                <input type="radio" name="status" id="notRead" />
+                <lable for="notRead">Want to Read</lable>
+              </div>
+            </div>
+
+            <button type="submit" class="submit-form">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
