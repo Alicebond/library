@@ -76,6 +76,10 @@ td {
   border-collapse: collapse;
 }
 
+/* .remove-btn {
+  border: 1px solid white;
+} */
+
 .new-book {
   margin-top: 10px;
 }
