@@ -69,7 +69,7 @@ function getData() {
   let newBook = new Book(title, author, pages, read);
 
   addBookToLibrary(newBook);
-  displayBooks(myLibrary);
+  generateTable(newBook.info(), newBook.title);
 }
 
 function displayBooks(myLibrary) {
