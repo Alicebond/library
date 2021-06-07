@@ -77,6 +77,7 @@ td {
 }
 
 .remove-btn {
+  background-color: #ff7979;
   border: none;
 }
 
@@ -98,7 +99,8 @@ b {
   margin: 20px auto;
 }
 
-select {
+.change-status {
   margin: 0;
   border: none;
+  background-color: #7ed6df;
 }

@@ -28,7 +28,7 @@
                 placeholder="Enter the Book Title"
                 name="title"
                 id="title"
-                required
+                required="required"
               />
             </div>
 
@@ -39,7 +39,7 @@
                 placeholder="Enter the Author"
                 name="author"
                 id="author"
-                required
+                required="required"
               />
             </div>
 
@@ -50,14 +50,19 @@
                 placeholder="Enter the Book Pages"
                 name="pages"
                 id="pages"
-                required
+                required="required"
               />
             </div>
 
             <div class="input input-read">
               <b>Status:</b>
               <div class="read">
-                <input type="radio" name="status" id="read" />
+                <input
+                  type="radio"
+                  name="status"
+                  id="read"
+                  required="required"
+                />
                 <lable for="read">Read</lable>
               </div>
               <div class="not-read">

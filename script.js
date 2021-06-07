@@ -1,6 +1,6 @@
 "use strict";
 
-let myLibrary = [];
+const myLibrary = [];
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -15,49 +15,44 @@ function Book(title, author, pages, read) {
   };
 }
 
-let myBook = new Book("My Book", "Joe", 300, false);
-
-let crimeAndPunishment = new Book(
-  "Crime and Punishment",
-  "Fyodor Dostoyevsky",
-  292,
-  false
-);
-let theLongGoodbye = new Book(
-  "The Long Goodbye",
-  "Raymond Chandler",
-  379,
-  true
-);
-let myLove = new Book("Farewell, My Lovely", "Raymond Chandler", 292, false);
-
 function addBookToLibrary(newBook) {
   myLibrary.push(newBook);
+  storeData(myLibrary);
 }
 
-addBookToLibrary(myBook);
-addBookToLibrary(crimeAndPunishment);
-addBookToLibrary(theLongGoodbye);
-addBookToLibrary(myLove);
+function clickNewBookBtn() {
+  const bgForm = document.querySelector("#bgForm");
+  const newBookBtn = document.querySelector("#newBook");
+  newBookBtn.addEventListener("click", () => {
+    bgForm.style.display = "flex";
+  });
+}
 
-const bgForm = document.querySelector("#bgForm");
-const newBookBtn = document.querySelector("#newBook");
-newBookBtn.addEventListener("click", () => {
-  bgForm.style.display = "flex";
-});
+function closeForm() {
+  const closeFormBtn = document.querySelector("#closeForm");
+  closeFormBtn.addEventListener("click", () => (bgForm.style.display = "none"));
+}
 
-const closeFormBtn = document.querySelector("#closeForm");
-closeFormBtn.addEventListener("click", () => (bgForm.style.display = "none"));
-
-const submitBtn = document.querySelector("#submitForm");
-submitBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  getData();
-});
+function submitData() {
+  const submitBtn = document.querySelector("#submitForm");
+  submitBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    getData();
+  });
+}
 
 function getData() {
   let title, author, pages, read;
-  const formData = document.querySelectorAll("input");
+  let formData = document.querySelectorAll("input");
+
+  let val1 = document.getElementById("title").value;
+  let val2 = document.getElementById("author").value;
+  let val3 = document.getElementById("pages").value;
+  let val4 = document.getElementById("read").value;
+  if (val1 === "" || val2 === "" || val3 === "" || val4 === "") return;
+
+  console.log(val3);
+
   formData.forEach((input) => {
     if (input.id === "read" && input.checked) read = true;
     else if (input.id === "notRead" && input.checked) read = false;
@@ -66,10 +61,24 @@ function getData() {
     else if (input.id === "pages") pages = input.value;
   });
 
-  let newBook = new Book(title, author, pages, read);
+  checkDuplicate(title, author, pages, read);
+}
 
-  addBookToLibrary(newBook);
-  generateTable(newBook.info(), newBook.title);
+function checkDuplicate(title, author, pages, read) {
+  let a = myLibrary.find(
+    (book) => (book.title === title, book.author === author)
+  );
+
+  if (!a) {
+    let newBook = new Book(title, author, pages, read);
+
+    addBookToLibrary(newBook);
+    generateTable(newBook.info(), newBook.title);
+  } else {
+    alert("The book already has been added!");
+    document.getElementById("formContainer").reset();
+    return;
+  }
 }
 
 function displayBooks(myLibrary) {
@@ -106,12 +115,14 @@ function removeBook(btnName) {
   document.getElementById(btnName).remove();
   let x = myLibrary.findIndex((book) => book.title === btnName);
   myLibrary.splice(x, 1);
+  storeData(myLibrary);
 }
 
 function createDropDownList(row, title) {
   let options = ["Change Status", "Read", "Want to Read"];
   let select = document.createElement("select");
   select.name = "status";
+  select.className = "change-status";
   select.dataset.title = `${title}`;
 
   for (let i of options) {
@@ -141,6 +152,55 @@ function changeStatus(changedStatus, changeTarget) {
 
   let el = document.getElementById(changeTarget);
   el.firstChild.textContent = myLibrary[x].info();
+  storeData(myLibrary);
 }
 
-displayBooks(myLibrary);
+function storeData(myLibrary) {
+  localStorage.clear();
+  localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+}
+
+function checkStorage() {
+  if (!localStorage.getItem("myLibrary")) return;
+  else {
+    let currentString = JSON.parse(localStorage.getItem("myLibrary"));
+    let currentLibrary = currentString.map(
+      (item) => new Book(item.title, item.author, item.pages, item.read)
+    );
+    displayBooks(currentLibrary);
+  }
+}
+
+function init() {
+  checkStorage();
+  clickNewBookBtn();
+  closeForm();
+  submitData();
+}
+
+init();
+
+////////////////////////////////////////////
+// Example:
+let myBook = new Book("My Book", "Joe", 300, false);
+
+let crimeAndPunishment = new Book(
+  "Crime and Punishment",
+  "Fyodor Dostoyevsky",
+  292,
+  false
+);
+
+let theLongGoodbye = new Book(
+  "The Long Goodbye",
+  "Raymond Chandler",
+  379,
+  true
+);
+
+let myLove = new Book("Farewell, My Lovely", "Raymond Chandler", 292, false);
+
+addBookToLibrary(myBook);
+addBookToLibrary(crimeAndPunishment);
+addBookToLibrary(theLongGoodbye);
+addBookToLibrary(myLove);
