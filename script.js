@@ -38,6 +38,7 @@ function submitData() {
   submitBtn.addEventListener("click", (e) => {
     e.preventDefault();
     getData();
+    document.getElementById("formContainer").reset();
   });
 }
 
@@ -50,8 +51,6 @@ function getData() {
   let val3 = document.getElementById("pages").value;
   let val4 = document.getElementById("read").value;
   if (val1 === "" || val2 === "" || val3 === "" || val4 === "") return;
-
-  console.log(val3);
 
   formData.forEach((input) => {
     if (input.id === "read" && input.checked) read = true;
@@ -100,7 +99,7 @@ function generateTable(text, title) {
 function createRrmoveBtn(row, title) {
   let btn = document.createElement("button");
   btn.type = "button";
-  btn.className = "remove-btn";
+  btn.className = "btn remove-btn";
   btn.textContent = "Remove";
   btn.dataset.btnName = `${title}`;
   row.appendChild(btn);
@@ -122,7 +121,7 @@ function createDropDownList(row, title) {
   let options = ["Change Status", "Read", "Want to Read"];
   let select = document.createElement("select");
   select.name = "status";
-  select.className = "change-status";
+  select.className = "btn change-status-btn";
   select.dataset.title = `${title}`;
 
   for (let i of options) {

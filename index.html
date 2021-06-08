@@ -13,65 +13,80 @@
       <h1>Library</h1>
       <table></table>
 
-      <button id="newBook" class="new-book">NEW BOOK</button>
+      <button id="newBook" class="btn new-book-btn">NEW BOOK</button>
 
       <div class="bg-form" id="bgForm">
         <div class="form-content" id="myForm">
           <form id="formContainer" action="#" class="form-container">
             <div class="close" id="closeForm">+</div>
-            <h3>Add A New Book</h3>
+            <h4>Add A New Book</h4>
 
             <div class="input input-title">
-              <label for="title"><b>Title:</b></label>
+              <label for="title"
+                ><p><b>Title:</b></p></label
+              >
               <input
                 type="text"
                 placeholder="Enter the Book Title"
                 name="title"
+                class="title"
                 id="title"
                 required="required"
               />
             </div>
 
             <div class="input input-author">
-              <label for="author"><b>Author:</b></label>
+              <label for="author"
+                ><p><b>Author:</b></p></label
+              >
               <input
                 type="text"
                 placeholder="Enter the Author"
                 name="author"
+                class="author"
                 id="author"
                 required="required"
               />
             </div>
 
             <div class="input input-pages">
-              <label for="pages"><b>Pages:</b></label>
+              <label for="pages"
+                ><p><b>Pages:</b></p></label
+              >
               <input
                 type="text"
                 placeholder="Enter the Book Pages"
                 name="pages"
+                class="pages"
                 id="pages"
                 required="required"
               />
             </div>
 
             <div class="input input-read">
-              <b>Status:</b>
+              <p><b>Status:</b></p>
               <div class="read">
                 <input
                   type="radio"
                   name="status"
+                  class="read"
                   id="read"
                   required="required"
                 />
                 <lable for="read">Read</lable>
               </div>
               <div class="not-read">
-                <input type="radio" name="status" id="notRead" />
+                <input
+                  type="radio"
+                  name="status"
+                  class="not-read"
+                  id="notRead"
+                />
                 <lable for="notRead">Want to Read</lable>
               </div>
             </div>
 
-            <button type="submit" class="submit-form" id="submitForm">
+            <button type="submit" class="btn submit-form-btn" id="submitForm">
               Submit
             </button>
           </form>
