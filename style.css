@@ -80,7 +80,7 @@ td {
 
 .remove-btn {
   background-color: #ff7979;
-  border: none;
+  border: #ff7979 solid 1px;
 }
 
 .remove-btn:hover {
@@ -146,8 +146,8 @@ input.read {
 }
 
 .change-status-btn {
-  border: none;
   background-color: #7ed6df;
+  border: #7ed6df solid 1px;
 }
 
 .change-status-btn:hover {
