@@ -78,6 +78,12 @@ table {
   border-collapse: collapse;
 }
 
+.table-caption {
+  font-size: 1.8rem;
+  padding: 2rem 0;
+  color: rgb(31, 137, 203);
+}
+
 td {
   border: 0.9px solid black;
   padding: 0 0.5rem;
