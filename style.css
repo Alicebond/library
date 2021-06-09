@@ -15,7 +15,7 @@ body,
 }
 
 html {
-  background-color: #e6fcff;
+  background-color: #e6fcffd7;
 }
 
 body {
@@ -80,6 +80,13 @@ table {
 
 td {
   border: 0.9px solid black;
+  padding: 0 0.5rem;
+}
+
+td,
+.remove-btn,
+.change-status-btn {
+  font-size: 23px;
 }
 
 .remove-btn {
