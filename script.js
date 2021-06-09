@@ -1,6 +1,7 @@
 "use strict";
 
 const myLibrary = [];
+const warningMessage = document.querySelector("#warnDuplicate");
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -10,7 +11,7 @@ function Book(title, author, pages, read) {
 
   this.info = function () {
     return `${this.title} by ${this.author}, ${this.pages} pages, ${
-      this.read ? "read." : "not read yet."
+      this.read ? "read ✅." : "not read yet 📚."
     }`;
   };
 }
@@ -21,6 +22,7 @@ function addBookToLibrary(newBook) {
 }
 
 function clickNewBookBtn() {
+  warningMessage.textContent = "";
   const bgForm = document.querySelector("#bgForm");
   const newBookBtn = document.querySelector("#newBook");
   newBookBtn.addEventListener("click", () => {
@@ -69,12 +71,13 @@ function checkDuplicate(title, author, pages, read) {
   );
 
   if (!a) {
+    warningMessage.textContent = "";
     let newBook = new Book(title, author, pages, read);
 
     addBookToLibrary(newBook);
     generateTable(newBook.info(), newBook.title);
   } else {
-    alert("The book already has been added!");
+    warningMessage.textContent = "💥 The book already has been added!";
     document.getElementById("formContainer").reset();
     return;
   }
