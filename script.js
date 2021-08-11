@@ -3,17 +3,19 @@
 const myLibrary = [];
 const warningMessage = document.querySelector("#warnDuplicate");
 
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
 
-  this.info = function () {
+  info() {
     return `${this.title} by ${this.author}, ${this.pages} pages, ${
       this.read ? "read ✅." : "not read yet 📚."
     }`;
-  };
+  }
 }
 
 function addBookToLibrary(newBook) {
@@ -148,9 +150,9 @@ function createDropDownList(row, title) {
 
 function changeStatus(changedStatus, changeTarget) {
   let x = myLibrary.findIndex((book) => book.title === changeTarget);
-  changedStatus === "Read"
-    ? (myLibrary[x].read = true)
-    : (myLibrary[x].read = false);
+  changedStatus === "Read" ?
+    (myLibrary[x].read = true) :
+    (myLibrary[x].read = false);
 
   let el = document.getElementById(changeTarget);
   el.firstChild.textContent = myLibrary[x].info();
