@@ -134,6 +134,14 @@ td,
   width: 70%;
 }
 
+input:invalid {
+  border: 1px dashed red;
+}
+
+input:invalid:required {
+  background-image: linear-gradient(to right, pink, lightgreen);
+}
+
 .input label {
   flex-grow: 1;
 }
